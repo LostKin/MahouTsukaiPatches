@@ -1,5 +1,7 @@
 package com.lostkin.durabilityfix;
 
+import com.lostkin.durabilityfix.event.ServerEvent;
+import com.lostkin.durabilityfix.networking.ModMessages;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
@@ -22,6 +24,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.Mixins;
 
 // The value here should match an entry in the META-INF/mods.toml file
 
@@ -56,12 +59,17 @@ public class DurabilityFix {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(ServerEvent.ServerForgeEvents.class);
+        Mixins.addConfiguration("durabilityfix.mixins.json");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
+        ModMessages.register();
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -83,4 +91,9 @@ public class DurabilityFix {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
+
+    public static void DebugLog(String message) {
+        LOGGER.info(message);
+    }
+
 }

@@ -1,13 +1,12 @@
 package com.lostkin.durabilityfix.event;
 
 import com.lostkin.durabilityfix.DurabilityFix;
+import com.lostkin.durabilityfix.networking.ModMessages;
+import com.lostkin.durabilityfix.networking.packet.EyesStatusC2SPacket;
 import com.lostkin.durabilityfix.util.KeyBinding;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -24,7 +23,7 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
             if (KeyBinding.EYES_KEY.consumeClick()) {
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("Pressed eyes key"));
+                ModMessages.sendToServer(new EyesStatusC2SPacket());
             }
         }
     }

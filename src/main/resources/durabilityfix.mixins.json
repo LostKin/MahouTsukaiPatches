@@ -1,10 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.LostKin.durabilityfix.mixin",
+  "package": "com.lostkin.durabilityfix.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "DurabilityFix.refmap.json",
   "mixins": [
+    "spells.EyesMixin"
   ],
   "client": [
   ],
