@@ -6,7 +6,12 @@
   "refmap": "DurabilityFix.refmap.json",
   "mixins": [
     "spells.BindingEyesMixin",
-    "spells.BlackFlameEyesMixin"
+    "spells.BlackFlameEyesMixin",
+    "spells.ClairvoyanceEyesMixin",
+    "spells.DeathCollectionEyesMixin",
+    "spells.FaySightEyesMixin",
+    "spells.InsightEyesMixin",
+    "spells.ReversionEyesMixin"
   ],
   "client": [
   ],

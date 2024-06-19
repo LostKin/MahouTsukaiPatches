@@ -19,6 +19,8 @@ import net.minecraftforge.fml.common.Mod;
 import stepsword.mahoutsukai.capability.mahou.PlayerManaManager;
 import stepsword.mahoutsukai.potion.ModEffects;
 
+import javax.swing.plaf.DimensionUIResource;
+
 public class ServerEvent {
 
     @Mod.EventBusSubscriber(modid = DurabilityFix.MODID, value= Dist.DEDICATED_SERVER)
@@ -26,47 +28,44 @@ public class ServerEvent {
 
         @SubscribeEvent
         public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-
+            if (event.player.level.isClientSide()) {
+                return;
+            }
 
             event.player.getCapability(PlayerEyesProvider.PLAYER_EYES).ifPresent(eyes -> {
                 if (eyes.getEyeType() != null && eyes.getEyeStatus()) {
                     //Trying to activate eyes
 
+                    boolean canAfford = true;
 
+                    if (eyes.getEyeCostCooldown() <= 0) {
+                        //need to spend mana
+                        int manaCost = EyesStorage.getEyeCost(eyes.getEyeType());
 
-                    event.player.addEffect(new MobEffectInstance(
-                            eyes.getEyeType().get(),
-                            10,
-                            0,
-                            false,
-                            false,
-                            false
-                    ));
+                        int manaDrained = PlayerManaManager.drainMana(event.player, manaCost, false, false);
+
+                        if (manaDrained <= 0) {
+                            eyes.setEyeStatus(false);
+                            eyes.setEyeCostCooldown(0);
+                            canAfford = false;
+                        } else {
+                            eyes.setEyeCostCooldown(2 * EyesStorage.getEyeDuration(eyes.getEyeType()));
+                        }
+                    }
+
+                    if (canAfford) {
+                        eyes.setEyeCostCooldown(eyes.getEyeCostCooldown() - 1);
+                        event.player.addEffect(new MobEffectInstance(
+                                eyes.getEyeType().get(),
+                                1,
+                                0,
+                                false,
+                                false,
+                                false
+                        ));
+                    }
                 }
             });
-
-            /*if (EyesStorage.eyesType.get(event.player.getUUID()) == null) {
-                EyesStorage.eyesStatus.put(event.player.getUUID(), false);
-            }
-
-            if (EyesStorage.eyesType.get(event.player.getUUID()) != null &&
-                    EyesStorage.eyesStatus.get(event.player.getUUID())) {
-
-                //int manaCost = 1;
-
-                //int mana = PlayerManaManager.countMana(event.player);
-
-                //PlayerManaManager.drainMana(event.player, manaCost, false, false);
-
-                event.player.addEffect(new MobEffectInstance(
-                        EyesStorage.eyesType.get(event.player.getUUID()).get(),
-                        10,
-                        0,
-                        false,
-                        false,
-                        false
-                ));
-            }*/
         }
 
         @SubscribeEvent

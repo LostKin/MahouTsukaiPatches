@@ -24,6 +24,7 @@ public class PlayerEyes {
 
     public void setEyeType(RegistryObject<MobEffect> effect) {
         eyeType = effect;
+        eyeCostCooldown = 0;
     }
 
     public void setEyeStatus(boolean status) {
