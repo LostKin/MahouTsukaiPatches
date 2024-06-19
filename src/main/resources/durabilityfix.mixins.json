@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "DurabilityFix.refmap.json",
   "mixins": [
-    "spells.EyesMixin"
+    "spells.BindingEyesMixin",
+    "spells.BlackFlameEyesMixin"
   ],
   "client": [
   ],

@@ -1,8 +1,11 @@
 package com.lostkin.durabilityfix.networking.packet;
 
 import com.lostkin.durabilityfix.eyes.EyesStorage;
+import com.lostkin.durabilityfix.eyes.PlayerEyesProvider;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -26,7 +29,11 @@ public class EyesStatusC2SPacket {
             //ModMessages.register();
             ServerPlayer player = context.getSender();
 
-            EyesStorage.flipEyesStatus(player.getUUID());
+            player.getCapability(PlayerEyesProvider.PLAYER_EYES).ifPresent(eyes -> {
+                //Trying to activate eyes
+                boolean newEyeStatus = !eyes.getEyeStatus();
+                eyes.setEyeStatus(newEyeStatus);
+            });
 
             /*ServerLevel level = player.getLevel();
 
