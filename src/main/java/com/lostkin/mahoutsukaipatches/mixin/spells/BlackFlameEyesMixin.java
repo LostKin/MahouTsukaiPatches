@@ -1,13 +1,7 @@
-package com.lostkin.durabilityfix.mixin.spells;
+package com.lostkin.mahoutsukaipatches.mixin.spells;
 
-import com.lostkin.durabilityfix.DurabilityFix;
-import com.lostkin.durabilityfix.eyes.EyesStorage;
-import com.lostkin.durabilityfix.eyes.PlayerEyesProvider;
-import com.lostkin.durabilityfix.networking.ModMessages;
-import com.lostkin.durabilityfix.networking.packet.EyesTypeC2SPacket;
-import net.minecraft.world.effect.MobEffectInstance;
+import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.fml.common.Mod;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

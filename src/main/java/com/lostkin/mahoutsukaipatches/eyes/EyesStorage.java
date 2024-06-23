@@ -1,13 +1,11 @@
-package com.lostkin.durabilityfix.eyes;
+package com.lostkin.mahoutsukaipatches.eyes;
 
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.Mob;
 import net.minecraftforge.registries.RegistryObject;
 import stepsword.mahoutsukai.config.MTConfig;
 import stepsword.mahoutsukai.potion.ModEffects;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class EyesStorage {

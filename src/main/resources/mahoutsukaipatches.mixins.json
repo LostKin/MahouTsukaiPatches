@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.lostkin.durabilityfix.mixin",
+  "package": "com.lostkin.mahoutsukaipatches.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "DurabilityFix.refmap.json",
   "mixins": [

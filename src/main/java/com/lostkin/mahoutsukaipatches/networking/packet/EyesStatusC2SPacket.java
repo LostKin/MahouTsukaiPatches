@@ -1,11 +1,8 @@
-package com.lostkin.durabilityfix.networking.packet;
+package com.lostkin.mahoutsukaipatches.networking.packet;
 
-import com.lostkin.durabilityfix.eyes.EyesStorage;
-import com.lostkin.durabilityfix.eyes.PlayerEyesProvider;
+import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;

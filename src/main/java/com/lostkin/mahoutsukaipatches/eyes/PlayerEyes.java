@@ -1,4 +1,4 @@
-package com.lostkin.durabilityfix.eyes;
+package com.lostkin.mahoutsukaipatches.eyes;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;

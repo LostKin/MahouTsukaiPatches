@@ -1,7 +1,7 @@
-package com.lostkin.durabilityfix.networking;
+package com.lostkin.mahoutsukaipatches.networking;
 
-import com.lostkin.durabilityfix.DurabilityFix;
-import com.lostkin.durabilityfix.networking.packet.EyesStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
+import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -21,7 +21,7 @@ public class ModMessages {
 
     public static void register() {
         SimpleChannel net = NetworkRegistry.ChannelBuilder
-                .named(new ResourceLocation(DurabilityFix.MODID, "messages"))
+                .named(new ResourceLocation(MahouTsukaiPatches.MODID, "messages"))
                 .networkProtocolVersion(() -> "1.0")
                 .clientAcceptedVersions(s -> true)
                 .serverAcceptedVersions(s -> true)

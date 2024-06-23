@@ -1,21 +1,15 @@
-package com.lostkin.durabilityfix.eyes;
+package com.lostkin.mahoutsukaipatches.eyes;
 
-import net.minecraft.client.particle.MobAppearanceParticle;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.level.NoteBlockEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import stepsword.mahoutsukai.potion.ModEffects;
 
 public class PlayerEyesProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
     public static Capability<PlayerEyes> PLAYER_EYES = CapabilityManager.get(new CapabilityToken<PlayerEyes>() {});

@@ -1,11 +1,10 @@
-package com.lostkin.durabilityfix.networking.packet;
+package com.lostkin.mahoutsukaipatches.networking.packet;
 
-import com.lostkin.durabilityfix.DurabilityFix;
-import com.lostkin.durabilityfix.eyes.EyesStorage;
+import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
+import com.lostkin.mahoutsukaipatches.eyes.EyesStorage;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.registries.RegistryObject;
 import stepsword.mahoutsukai.potion.ModEffects;
@@ -55,7 +54,7 @@ public class EyesTypeC2SPacket {
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            DurabilityFix.DebugLog(effect.toString());
+            MahouTsukaiPatches.DebugLog(effect.toString());
             //ModMessages.register();
             ServerPlayer player = context.getSender();
 

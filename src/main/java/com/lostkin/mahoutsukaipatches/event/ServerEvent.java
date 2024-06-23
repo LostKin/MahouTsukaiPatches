@@ -1,9 +1,9 @@
-package com.lostkin.durabilityfix.event;
+package com.lostkin.mahoutsukaipatches.event;
 
-import com.lostkin.durabilityfix.DurabilityFix;
-import com.lostkin.durabilityfix.eyes.EyesStorage;
-import com.lostkin.durabilityfix.eyes.PlayerEyes;
-import com.lostkin.durabilityfix.eyes.PlayerEyesProvider;
+import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
+import com.lostkin.mahoutsukaipatches.eyes.EyesStorage;
+import com.lostkin.mahoutsukaipatches.eyes.PlayerEyes;
+import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -13,17 +13,13 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.level.NoteBlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import stepsword.mahoutsukai.capability.mahou.PlayerManaManager;
-import stepsword.mahoutsukai.potion.ModEffects;
-
-import javax.swing.plaf.DimensionUIResource;
 
 public class ServerEvent {
 
-    @Mod.EventBusSubscriber(modid = DurabilityFix.MODID, value= Dist.DEDICATED_SERVER)
+    @Mod.EventBusSubscriber(modid = MahouTsukaiPatches.MODID, value= Dist.DEDICATED_SERVER)
     public static class ServerForgeEvents {
 
         @SubscribeEvent
@@ -72,7 +68,7 @@ public class ServerEvent {
         public static void onAttachCapability(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof Player) {
                 if (!event.getObject().getCapability(PlayerEyesProvider.PLAYER_EYES).isPresent()) {
-                    event.addCapability(new ResourceLocation(DurabilityFix.MODID, "properties"), new PlayerEyesProvider());
+                    event.addCapability(new ResourceLocation(MahouTsukaiPatches.MODID, "properties"), new PlayerEyesProvider());
                 }
             }
         }

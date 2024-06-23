@@ -1,7 +1,7 @@
-package com.lostkin.durabilityfix;
+package com.lostkin.mahoutsukaipatches;
 
-import com.lostkin.durabilityfix.event.ServerEvent;
-import com.lostkin.durabilityfix.networking.ModMessages;
+import com.lostkin.mahoutsukaipatches.event.ServerEvent;
+import com.lostkin.mahoutsukaipatches.networking.ModMessages;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
@@ -29,11 +29,11 @@ import org.spongepowered.asm.mixin.Mixins;
 // The value here should match an entry in the META-INF/mods.toml file
 
 
-@Mod(DurabilityFix.MODID)
-public class DurabilityFix {
+@Mod(MahouTsukaiPatches.MODID)
+public class MahouTsukaiPatches {
 
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "durabilityfix";
+    public static final String MODID = "mahoutsukaipatches";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "durabilityfix" namespace
@@ -46,7 +46,7 @@ public class DurabilityFix {
     // Creates a new BlockItem with the id "durabilityfix:example_block", combining the namespace and path
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
 
-    public DurabilityFix() {
+    public MahouTsukaiPatches() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
@@ -60,7 +60,7 @@ public class DurabilityFix {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ServerEvent.ServerForgeEvents.class);
-        Mixins.addConfiguration("durabilityfix.mixins.json");
+        Mixins.addConfiguration("mahoutsukaipatches.mixins.json");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
