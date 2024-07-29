@@ -3,6 +3,7 @@ package com.lostkin.mahoutsukaipatches.event;
 import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
 import com.lostkin.mahoutsukaipatches.networking.ModMessages;
 import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusC2SPacket;
 import com.lostkin.mahoutsukaipatches.util.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -17,13 +18,18 @@ public class ClientEvents {
 
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
+
             event.register(KeyBinding.EYES_KEY);
+            event.register(KeyBinding.PROTECTION_KEY);
         }
 
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
             if (KeyBinding.EYES_KEY.consumeClick()) {
                 ModMessages.sendToServer(new EyesStatusC2SPacket());
+            }
+            if (KeyBinding.PROTECTION_KEY.consumeClick()) {
+                ModMessages.sendToServer(new ProtectionStatusC2SPacket());
             }
         }
     }
@@ -33,6 +39,7 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
             event.register(KeyBinding.EYES_KEY);
+            event.register(KeyBinding.PROTECTION_KEY);
         }
     }
 

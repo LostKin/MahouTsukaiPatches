@@ -5,13 +5,14 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "DurabilityFix.refmap.json",
   "mixins": [
-    "spells.BindingEyesMixin",
-    "spells.BlackFlameEyesMixin",
-    "spells.ClairvoyanceEyesMixin",
-    "spells.DeathCollectionEyesMixin",
-    "spells.FaySightEyesMixin",
-    "spells.InsightEyesMixin",
-    "spells.ReversionEyesMixin"
+    "eyes.BindingEyesMixin",
+    "eyes.BlackFlameEyesMixin",
+    "eyes.ClairvoyanceEyesMixin",
+    "eyes.DeathCollectionEyesMixin",
+    "eyes.FaySightEyesMixin",
+    "eyes.InsightEyesMixin",
+    "eyes.ReversionEyesMixin",
+    "protection.ProtectiveDisplacementScrollMixin"
   ],
   "client": [
   ],

@@ -4,6 +4,8 @@ import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
 import com.lostkin.mahoutsukaipatches.eyes.EyesStorage;
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyes;
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
+import com.lostkin.mahoutsukaipatches.protection.PlayerProtection;
+import com.lostkin.mahoutsukaipatches.protection.PlayerProtectionProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -68,7 +70,10 @@ public class ServerEvent {
         public static void onAttachCapability(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof Player) {
                 if (!event.getObject().getCapability(PlayerEyesProvider.PLAYER_EYES).isPresent()) {
-                    event.addCapability(new ResourceLocation(MahouTsukaiPatches.MODID, "properties"), new PlayerEyesProvider());
+                    event.addCapability(new ResourceLocation(MahouTsukaiPatches.MODID, "eye_status"), new PlayerEyesProvider());
+                }
+                if (!event.getObject().getCapability(PlayerProtectionProvider.PLAYER_PROTECTION).isPresent()) {
+                    event.addCapability(new ResourceLocation(MahouTsukaiPatches.MODID, "protection_status"), new PlayerProtectionProvider());
                 }
             }
         }
@@ -84,14 +89,19 @@ public class ServerEvent {
                         newScore.copyFrom(oldScore);
                     });
                 });
+                event.getOriginal().getCapability(PlayerProtectionProvider.PLAYER_PROTECTION).ifPresent(oldScore -> {
+                    event.getEntity().getCapability(PlayerProtectionProvider.PLAYER_PROTECTION).ifPresent(newScore -> {
+                        newScore.copyFrom(oldScore);
+                    });
+                });
                 event.getOriginal().invalidateCaps();
-
             }
         }
 
         @SubscribeEvent
         public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
             event.register(PlayerEyes.class);
+            event.register(PlayerProtection.class);
         }
 
     }
