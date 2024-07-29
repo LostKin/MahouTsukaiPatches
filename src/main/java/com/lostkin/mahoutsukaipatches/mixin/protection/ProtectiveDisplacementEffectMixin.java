@@ -1,8 +1,12 @@
 package com.lostkin.mahoutsukaipatches.mixin.protection;
 
 import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
+import com.lostkin.mahoutsukaipatches.networking.ModMessages;
+import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusS2CPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusS2CPacket;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtectionProvider;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
@@ -64,11 +68,17 @@ public class ProtectiveDisplacementEffectMixin {
 
             if (manaDrained <= 0) {
                 IMahou mahou = Utils.getPlayerMahou(player);
-                player.sendSystemMessage(Component.literal("You don't have enough mana to protect yourself"));
+                //player.sendSystemMessage(Component.literal("You don't have enough mana to protect yourself"));
                 player.getCapability(PlayerProtectionProvider.PLAYER_PROTECTION).ifPresent(protection -> {
                     protection.setProtectionStatus(false);
                 });
                 mahou.setProtectiveDisplacement(0);
+
+                ModMessages.sendToPlayer(new ProtectionStatusS2CPacket(false), (ServerPlayer) player);
+
+            } else {
+                IMahou mahou = Utils.getPlayerMahou(player);
+                mahou.setProtectiveDisplacement(1);
             }
         }
     }

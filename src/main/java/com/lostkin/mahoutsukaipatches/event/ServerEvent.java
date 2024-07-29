@@ -4,9 +4,12 @@ import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
 import com.lostkin.mahoutsukaipatches.eyes.EyesStorage;
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyes;
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
+import com.lostkin.mahoutsukaipatches.networking.ModMessages;
+import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusS2CPacket;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtection;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtectionProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -63,6 +66,9 @@ public class ServerEvent {
                                 false,
                                 false
                         ));
+                    } else {
+                        eyes.setEyeStatus(false);
+                        ModMessages.sendToPlayer(new EyesStatusS2CPacket(false), (ServerPlayer) event.player);
                     }
                 }
             });

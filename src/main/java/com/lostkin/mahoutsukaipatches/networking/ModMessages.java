@@ -2,7 +2,9 @@ package com.lostkin.mahoutsukaipatches.networking;
 
 import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
 import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusS2CPacket;
 import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -40,6 +42,17 @@ public class ModMessages {
                 .decoder(ProtectionStatusC2SPacket::new)
                 .encoder(ProtectionStatusC2SPacket::toBytes)
                 .consumerMainThread(ProtectionStatusC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(EyesStatusS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(EyesStatusS2CPacket::new)
+                .encoder(EyesStatusS2CPacket::toBytes)
+                .consumerMainThread(EyesStatusS2CPacket::handle)
+                .add();
+        net.messageBuilder(ProtectionStatusS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ProtectionStatusS2CPacket::new)
+                .encoder(ProtectionStatusS2CPacket::toBytes)
+                .consumerMainThread(ProtectionStatusS2CPacket::handle)
                 .add();
 
     }

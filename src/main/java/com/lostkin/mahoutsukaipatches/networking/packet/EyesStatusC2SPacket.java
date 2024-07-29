@@ -1,6 +1,7 @@
 package com.lostkin.mahoutsukaipatches.networking.packet;
 
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
+import com.lostkin.mahoutsukaipatches.networking.ModMessages;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -30,7 +31,11 @@ public class EyesStatusC2SPacket {
                 //Trying to activate eyes
                 boolean newEyeStatus = !eyes.getEyeStatus();
                 eyes.setEyeStatus(newEyeStatus);
+
+                ModMessages.sendToPlayer(new EyesStatusS2CPacket(eyes.getEyeStatus()), player);
             });
+
+
 
             /*ServerLevel level = player.getLevel();
 

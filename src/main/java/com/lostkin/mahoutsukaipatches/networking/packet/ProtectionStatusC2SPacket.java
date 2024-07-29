@@ -2,6 +2,7 @@ package com.lostkin.mahoutsukaipatches.networking.packet;
 
 import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
+import com.lostkin.mahoutsukaipatches.networking.ModMessages;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtectionProvider;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -34,11 +35,13 @@ public class ProtectionStatusC2SPacket {
                 if (protection.getProtectionUnlocked()) {
                     boolean newProtectionStatus = !protection.getProtectionStatus();
                     protection.setProtectionStatus(newProtectionStatus);
-                    if (newProtectionStatus) {
+                    /*if (newProtectionStatus) {
                         player.sendSystemMessage(Component.literal("You are now protected from arrows"));
                     } else {
                         player.sendSystemMessage(Component.literal("You are no longer protected from arrows"));
-                    }
+                    }*/
+
+                    ModMessages.sendToPlayer(new ProtectionStatusS2CPacket(protection.getProtectionStatus()), player);
                 }
             });
 
