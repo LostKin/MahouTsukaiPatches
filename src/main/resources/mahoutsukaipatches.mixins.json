@@ -12,7 +12,8 @@
     "eyes.FaySightEyesMixin",
     "eyes.InsightEyesMixin",
     "eyes.ReversionEyesMixin",
-    "protection.ProtectiveDisplacementScrollMixin"
+    "protection.ProtectiveDisplacementScrollMixin",
+    "protection.ProtectiveDisplacementEffectMixin"
   ],
   "client": [
   ],

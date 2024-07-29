@@ -17,7 +17,9 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import stepsword.mahoutsukai.capability.mahou.IMahou;
 import stepsword.mahoutsukai.capability.mahou.PlayerManaManager;
+import stepsword.mahoutsukai.util.Utils;
 
 public class ServerEvent {
 
@@ -64,6 +66,18 @@ public class ServerEvent {
                     }
                 }
             });
+
+            event.player.getCapability(PlayerProtectionProvider.PLAYER_PROTECTION).ifPresent(protection -> {
+                if (protection.getProtectionUnlocked()) {
+                    IMahou mahou = Utils.getPlayerMahou(event.player);
+                    if (protection.getProtectionStatus()) {
+                        mahou.setProtectiveDisplacement(1);
+                    } else {
+                        mahou.setProtectiveDisplacement(0);
+                    }
+                }
+            });
+
         }
 
         @SubscribeEvent
