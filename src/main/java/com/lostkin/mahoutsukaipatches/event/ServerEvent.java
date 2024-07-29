@@ -6,6 +6,7 @@ import com.lostkin.mahoutsukaipatches.eyes.PlayerEyes;
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import com.lostkin.mahoutsukaipatches.networking.ModMessages;
 import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusS2CPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusS2CPacket;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtection;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtectionProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +19,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import stepsword.mahoutsukai.capability.mahou.IMahou;
@@ -28,6 +30,28 @@ public class ServerEvent {
 
     @Mod.EventBusSubscriber(modid = MahouTsukaiPatches.MODID, value= Dist.DEDICATED_SERVER)
     public static class ServerForgeEvents {
+
+        @SubscribeEvent
+        public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+            Player player = event.getEntity();
+
+            if (player.level.isClientSide()) {
+                return;
+            }
+
+            player.getCapability(PlayerEyesProvider.PLAYER_EYES).ifPresent(eyes -> {
+                if (eyes.getEyeType() != null) {
+                    ModMessages.sendToPlayer(new EyesStatusS2CPacket(eyes.getEyeStatus()), (ServerPlayer) player);
+                }
+            });
+
+            player.getCapability(PlayerProtectionProvider.PLAYER_PROTECTION).ifPresent(protection -> {
+                if (protection.getProtectionUnlocked()) {
+                    ModMessages.sendToPlayer(new ProtectionStatusS2CPacket(protection.getProtectionStatus()), (ServerPlayer) player);
+                }
+            });
+
+        }
 
         @SubscribeEvent
         public static void onPlayerTick(TickEvent.PlayerTickEvent event) {

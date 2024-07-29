@@ -10,10 +10,10 @@ import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 public class ProtectionHudOverlay {
 
     public static ResourceLocation PROTECTION_ACTIVE = new ResourceLocation(MahouTsukaiPatches.MODID,
-            "textures/protection/protection_active.png");
+            "textures/protection/protection_enabled_icon.png");
 
     public static ResourceLocation PROTECTION_INACTIVE = new ResourceLocation(MahouTsukaiPatches.MODID,
-            "textures/protection/protection_inactive.png");
+            "textures/protection/protection_disabled_icon.png");
 
     public static final IGuiOverlay HUD_EYES= ((forgeGui, poseStack, partialTick, width, height) -> {
         int x = width / 2;

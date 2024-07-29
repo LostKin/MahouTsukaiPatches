@@ -13,10 +13,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EyesHudOverlay {
     public static ResourceLocation OPEN_EYE = new ResourceLocation(MahouTsukaiPatches.MODID,
-            "textures/eyes/eyes_open.png");
+            "textures/eyes/eye_enabled_icon.png");
 
     public static ResourceLocation CLOSED_EYE = new ResourceLocation(MahouTsukaiPatches.MODID,
-            "textures/eyes/eyes_closed.png");
+            "textures/eyes/eye_disabled_icon.png");
 
     public static final IGuiOverlay HUD_EYES= ((forgeGui, poseStack, partialTick, width, height) -> {
         int x = width / 2;
