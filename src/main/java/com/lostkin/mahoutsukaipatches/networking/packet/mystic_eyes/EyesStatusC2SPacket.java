@@ -1,4 +1,4 @@
-package com.lostkin.mahoutsukaipatches.networking.packet;
+package com.lostkin.mahoutsukaipatches.networking.packet.mystic_eyes;
 
 import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import com.lostkin.mahoutsukaipatches.networking.ModMessages;

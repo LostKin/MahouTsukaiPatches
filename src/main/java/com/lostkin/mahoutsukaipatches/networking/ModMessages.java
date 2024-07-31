@@ -1,10 +1,10 @@
 package com.lostkin.mahoutsukaipatches.networking;
 
 import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
-import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusC2SPacket;
-import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusS2CPacket;
-import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusC2SPacket;
-import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusS2CPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.mystic_eyes.EyesStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.mystic_eyes.EyesStatusS2CPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.protective_displacement.ProtectionStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.protective_displacement.ProtectionStatusS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;

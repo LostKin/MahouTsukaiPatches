@@ -1,6 +1,5 @@
-package com.lostkin.mahoutsukaipatches.networking.packet;
+package com.lostkin.mahoutsukaipatches.networking.packet.protective_displacement;
 
-import com.lostkin.mahoutsukaipatches.client.ClientEyeData;
 import com.lostkin.mahoutsukaipatches.client.ClientProtectionData;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;

@@ -13,7 +13,8 @@
     "eyes.InsightEyesMixin",
     "eyes.ReversionEyesMixin",
     "protection.ProtectiveDisplacementScrollMixin",
-    "protection.ProtectiveDisplacementEffectMixin"
+    "protection.ProtectiveDisplacementEffectMixin",
+    "caliburn.UnbreakableTagMixin"
   ],
   "client": [
   ],

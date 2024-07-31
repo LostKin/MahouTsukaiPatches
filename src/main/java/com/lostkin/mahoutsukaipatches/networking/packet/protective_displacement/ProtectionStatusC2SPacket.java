@@ -1,11 +1,9 @@
-package com.lostkin.mahoutsukaipatches.networking.packet;
+package com.lostkin.mahoutsukaipatches.networking.packet.protective_displacement;
 
 import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
-import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import com.lostkin.mahoutsukaipatches.networking.ModMessages;
 import com.lostkin.mahoutsukaipatches.protection.PlayerProtectionProvider;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 

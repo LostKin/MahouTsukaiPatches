@@ -1,9 +1,7 @@
-package com.lostkin.mahoutsukaipatches.networking.packet;
+package com.lostkin.mahoutsukaipatches.networking.packet.mystic_eyes;
 
 import com.lostkin.mahoutsukaipatches.client.ClientEyeData;
-import com.lostkin.mahoutsukaipatches.eyes.PlayerEyesProvider;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;

@@ -4,8 +4,8 @@ import com.lostkin.mahoutsukaipatches.MahouTsukaiPatches;
 import com.lostkin.mahoutsukaipatches.client.EyesHudOverlay;
 import com.lostkin.mahoutsukaipatches.client.ProtectionHudOverlay;
 import com.lostkin.mahoutsukaipatches.networking.ModMessages;
-import com.lostkin.mahoutsukaipatches.networking.packet.EyesStatusC2SPacket;
-import com.lostkin.mahoutsukaipatches.networking.packet.ProtectionStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.mystic_eyes.EyesStatusC2SPacket;
+import com.lostkin.mahoutsukaipatches.networking.packet.protective_displacement.ProtectionStatusC2SPacket;
 import com.lostkin.mahoutsukaipatches.util.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -34,6 +34,7 @@ public class ClientEvents {
             if (KeyBinding.PROTECTION_KEY.consumeClick()) {
                 ModMessages.sendToServer(new ProtectionStatusC2SPacket());
             }
+            
         }
     }
 
